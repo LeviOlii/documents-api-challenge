@@ -25,5 +25,5 @@ API RESTful para upload, consulta e análise de documentos com autenticação JW
 
 1. **Clone o repositório**  
    ```bash
-   git clone https://github.com/seu-usuario/repositorio.git
-   cd repositorio
+   git clone https://github.com/LeviOlii/documents-api-challenge.git
+   cd documents-api-challenge

@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int       @id @default(autoincrement())
+  name       String
+  email      String   @unique
+  password   String   @map("password_hash")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+  datasets   Dataset[]
+  queries    Query[]
+
+  @@map("users")
+}
+
+model Dataset {
+  id        Int      @id @default(autoincrement())
+  name      String
+  userId    Int      @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  records   Record[]
+  queries   Query[]
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("datasets")
+}
+
+model Record {
+  id        Int      @id @default(autoincrement())
+  datasetId Int      @map("dataset_id")
+  data      Json
+  text      String?  @db.Text 
+  createdAt DateTime @default(now()) @map("created_at")
+  dataset   Dataset  @relation(fields: [datasetId], references: [id])
+
+  @@map("records")
+}
+
+
+model Query {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  question  String
+  answer    String
+  datasetId Int?     @map("dataset_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  user      User     @relation(fields: [userId], references: [id])
+  dataset   Dataset? @relation(fields: [datasetId], references: [id])
+
+  @@index([userId])
+  @@index([datasetId])
+  @@map("queries")
+}

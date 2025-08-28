@@ -38,7 +38,7 @@ cd documents-api-challenge
 ---
 
 ### 🛠️ 2. Crie um arquivo .env
-Crie um arquivo .env na raiz do projeto com o seguinte conteúdo:
+Crie um arquivo .env na raiz do projeto, trocando cada campo por suas informações pessoais:
 
 ```env
 DATABASE_URL=postgresql://postgres:senha_segura@db:5432/docmanager_db?schema=public

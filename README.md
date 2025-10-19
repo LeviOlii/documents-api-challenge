@@ -149,6 +149,32 @@ Exemplo:
 
 ---
 
+### 🤖 8. Fazer uma query com IA
+
+**POST** */queries*
+Permite enviar uma pergunta sobre um dataset, que será analisada pela IA da Hugging Face. 
+A IA utiliza o conteúdo do dataset para gerar respostas contextualizadas.
+
+**Corpo da requisição:**
+```
+{
+  "question": "Qual é o total de vendas do mês de março?",
+  "datasetId": 1
+}
+```
+**Corpo da resposta**
+```
+{
+  "id": 5,
+  "user_id": 1,
+  "question": "Qual é o total de vendas do mês de março?",
+  "answer": "Com base nos dados fornecidos, o total de vendas em março foi de 42.350 unidades.",
+  "dataset_id": 1,
+  "created_at": "2025-10-19T13:22:00.000Z"
+}
+```
+💡 Dica: quanto mais completo for o conteúdo do dataset, mais precisa será a resposta da IA. Certifique-se de que o dataset foi carregado e processado antes de enviar perguntas.
+
 ### Encerrando
 Para parar e remover os containers:
 

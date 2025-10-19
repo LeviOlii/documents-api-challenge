@@ -151,7 +151,23 @@ Exemplo:
 
 ### 🤖 8. Fazer uma query com IA
 
+> ⚙️ **Integração com IA (Hugging Face)**
+>
+> Para usar os endpoints de consulta via IA (`/queries`), é necessário criar uma conta gratuita no [Hugging Face](https://huggingface.co/) e gerar uma chave de API:
+>
+> 1. Acesse o [Hugging Face](https://huggingface.co/).
+> 2. Vá em **Settings > Access Tokens**.
+> 3. Clique em **New token**, marque a opção **Inference - Make calls to Inference Providers**.
+> 4. Copie o token gerado e cole no seu arquivo `.env` como:
+>    ```env
+>    HF_API_KEY=seu_token_aqui
+>    ```
+>
+> Com isso, a IA será capaz de processar suas perguntas e gerar respostas baseadas no conteúdo dos datasets.
+
+
 **POST** */queries*
+
 Permite enviar uma pergunta sobre um dataset, que será analisada pela IA da Hugging Face. 
 A IA utiliza o conteúdo do dataset para gerar respostas contextualizadas.
 
